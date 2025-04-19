@@ -9,7 +9,7 @@ API_URL = os.getenv("API_URL")
 DAYS = 1
 LANG = 'ru'
 AQI = 'yes'
-city = 'Москва'
+
 
 def load_data(city):
     response = requests.get(API_URL, params={'key': API_KEY, 'q': city, 'days': DAYS, 'aqi': AQI, 'lang': LANG})

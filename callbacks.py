@@ -3,7 +3,8 @@ from utils.data_loader import load_data
 import plotly.graph_objects as go
 
 def register_callbacks(app):
-    @app.callback(
+   city = 'Москва'
+   @app.callback(
         Output('weather-output', 'children'),
         Output('co-graph', 'figure'),
         Output('no2-graph', 'figure'),
@@ -13,7 +14,8 @@ def register_callbacks(app):
         Output('pm10-graph', 'figure'),
         Input('city-input', 'value')
     )
-    def update_dashboard(city):
+
+   def update_dashboard(city):
         data = load_data(city)
     
         weather_info = html.Div([
