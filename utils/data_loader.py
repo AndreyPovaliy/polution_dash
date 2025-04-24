@@ -19,33 +19,34 @@ def load_data(city):
     forecast_hours = data['forecast']['forecastday'][0]['hour']
     city_name = location['name']
     current_time = location['localtime']
-    current_air = data['current']['air_quality']
-    current_co = current_air['co']
-    current_no2 = current_air['no2']
-    current_o3 = current_air['o3']
-    current_so2 = current_air['so2']
-    current_pm2_5 = current_air['pm2_5']
-    current_pm10 = current_air['pm10']
+    current = data['current']
+    current_wind_kph = current['wind_kph']
+    current_pressure_mb = current['pressure_mb']
+    current_humidity = current['humidity']
+    current_cloud = current['cloud']
+    current_uv = current['uv']
+    current_gust_kph = current['gust_kph']
     hours = [h['time'][-5:] for h in forecast_hours]
-    co = [h['air_quality']['co'] for h in forecast_hours]
-    no2 = [h['air_quality']['no2'] for h in forecast_hours]
-    o3 = [h['air_quality']['o3'] for h in forecast_hours]
-    so2 = [h['air_quality']['so2'] for h in forecast_hours]
-    pm2_5 = [h['air_quality']['pm2_5'] for h in forecast_hours]
-    pm10 = [h['air_quality']['pm10'] for h in forecast_hours]
+    wind_kph = [h['wind_kph'] for h in forecast_hours]
+    pressure_mb = [h['pressure_mb'] for h in forecast_hours]
+    humidity = [h['humidity'] for h in forecast_hours]
+    cloud = [h['cloud'] for h in forecast_hours]
+    uv = [h['uv'] for h in forecast_hours]
+    gust_kph = [h['uv'] for h in forecast_hours]
+   
     return {"location": location,
             "city_name": city_name,
             "current_time":current_time,
-            "current_co": current_co,
-            "current_no2": current_no2,
-            "current_o3": current_o3,
-            "current_so2": current_so2,
-            "current_pm2_5": current_pm2_5,
-            "current_pm10": current_pm10,
+            "current_wind_kph": current_wind_kph,
+            "current_pressure_mb": current_pressure_mb,
+            "current_humidity": current_humidity,
+            "current_cloud": current_cloud,
+            "current_uv": current_uv,
+            "current_gust_kph": current_gust_kph,
             "hours": hours,
-            "co": co,
-            "no2":no2,
-            "o3":o3,
-            "so2":so2,
-            "pm2_5":pm2_5,
-            "pm10":pm10}
+            "wind_kph": wind_kph,
+            "pressure_mb":pressure_mb,
+            "humidity":humidity,
+            "cloud":cloud,
+            "uv":uv,
+            "gust_kph":gust_kph}

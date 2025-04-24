@@ -6,12 +6,12 @@ def register_callbacks(app):
    city = 'Москва'
    @app.callback(
         Output('weather-output', 'children'),
-        Output('co-graph', 'figure'),
-        Output('no2-graph', 'figure'),
-        Output('o3-graph', 'figure'),
-        Output('so2-graph', 'figure'),
-        Output('pm25-graph', 'figure'),
-        Output('pm10-graph', 'figure'),
+        Output('wind_kph-graph', 'figure'),
+        Output('pressure_mb-graph', 'figure'),
+        Output('humidity-graph', 'figure'),
+        Output('cloud-graph', 'figure'),
+        Output('uv-graph', 'figure'),
+        Output('gust_kph-graph', 'figure'),
         Input('city-input', 'value')
     )
 
@@ -19,46 +19,46 @@ def register_callbacks(app):
         data = load_data(city)
     
         weather_info = html.Div([
-            html.H4(f"{data['city_name']}", className="card-title"),
-            html.H6(f"Состояние на {data['current_time']}" , className="card-subtitle"),
-            html.P("Углекислый газ: " + str(data['current_co']), className="card-text"),
-            html.P("Оксид азота: " + str(data['current_no2']), className="card-text"),
-            html.P("Озон: " + str(data['current_o3']), className="card-text"),
-            html.P("Оксид серы: " + str(data['current_so2']), className="card-text"),
-            html.P("Мельчайшие частицы: " + str(data['current_pm2_5']), className="card-text"),
-            html.P("Твердые частицы: " + str(data['current_pm10']), className="card-text")
+            html.H1(f"{data['city_name']}", className="card-title"),
+            html.H3(f"Состояние на {data['current_time']}" , className="card-subtitle"),
+            html.P("Скорость ветра (к/ч): " + str(data['current_wind_kph']), className="card-text"),
+            html.P("Давление (миллибары): " + str(data['current_pressure_mb']), className="card-text"),
+            html.P("Влажность (%): " + str(data['current_humidity']), className="card-text"),
+            html.P("Облачный покров (%): " + str(data['current_cloud']), className="card-text"),
+            html.P("УФ-индекс: " + str(data['current_uv']), className="card-text"),
+            html.P("Порыв ветра (к/ч): " + str(data['current_gust_kph']), className="card-text")
         ])
 
-        co_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['co'], mode='lines+markers', name='co')],
-           layout=go.Layout(title='График No1 Углекислый газ', xaxis_title='Время', yaxis_title='CO', template='ggplot2') 
+        wind_kph_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['wind_kph'], mode='lines+markers', name='wind_kph')],
+           layout=go.Layout(title='Скорость ветра:', xaxis_title='Время', yaxis_title='(к/ч)', template='ggplot2') 
         )
-        no2_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['no2'], mode='lines+markers', name='no2')],
-           layout=go.Layout(title='График No2 Оксид азота', xaxis_title='Время', yaxis_title='NO2', template='ggplot2') 
-        )
-
-        o3_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['o3'], mode='lines+markers', name='o3')],
-           layout=go.Layout(title='График No3 Озон', xaxis_title='Время', yaxis_title='O3', template='ggplot2') 
+        pressure_mb_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['pressure_mb'], mode='lines+markers', name='pressure_mb')],
+           layout=go.Layout(title='Давление', xaxis_title='Время', yaxis_title='(миллибары)', template='ggplot2') 
         )
 
-        so2_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['so2'], mode='lines+markers', name='so2')],
-           layout=go.Layout(title='График No4 Оксид серы', xaxis_title='Время', yaxis_title='SO2', template='ggplot2') 
+        humidity_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['humidity'], mode='lines+markers', name='humidity')],
+           layout=go.Layout(title='Влажность', xaxis_title='Время', yaxis_title='(%)', template='ggplot2') 
         )
 
-        pm2_5_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['pm2_5'], mode='lines+markers', name='pm2_5')],
-           layout=go.Layout(title='График No5 Мельчайшие частицы', xaxis_title='Время', yaxis_title='PM2_5', template='ggplot2') 
+        cloud_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['cloud'], mode='lines+markers', name='cloud')],
+           layout=go.Layout(title='Облачный покров ', xaxis_title='Время', yaxis_title='(%)', template='ggplot2') 
         )
 
-        pm10_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['pm10'], mode='lines+markers', name='pm10')],
-           layout=go.Layout(title='График No6 Твердые частицы', xaxis_title='Время', yaxis_title='PM10', template='ggplot2') 
+        uv_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['uv'], mode='lines+markers', name='uv')],
+           layout=go.Layout(title='УФ-индекс', xaxis_title='Время', yaxis_title='(индекс)', template='ggplot2') 
+        )
+
+        gust_kph_fig = go.Figure(
+           data=[go.Scatter(x=data['hours'], y=data['gust_kph'], mode='lines+markers', name='gust_kph')],
+           layout=go.Layout(title='Порыв ветра', xaxis_title='Время', yaxis_title='(к/ч)', template='ggplot2') 
         )
        
 
           
 
-        return weather_info, co_fig, no2_fig, o3_fig, so2_fig, pm2_5_fig, pm10_fig
+        return weather_info, wind_kph_fig, pressure_mb_fig, humidity_fig, cloud_fig, uv_fig, gust_kph_fig
