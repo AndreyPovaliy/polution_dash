@@ -4,7 +4,7 @@ from callbacks import register_callbacks
 import dash_bootstrap_components as dbc
 
 app = Dash(external_stylesheets=[dbc.themes.JOURNAL])
-app.title = "Состояние воздуха"
+app.title = "Состояние чего-то другого"
 server = app.server
 
 app.layout = create_layout()
