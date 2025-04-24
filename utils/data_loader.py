@@ -9,6 +9,7 @@ API_URL = os.getenv("API_URL")
 DAYS = 1
 LANG = 'ru'
 AQI = 'yes'
+# city = 'Москва'
 
 
 def load_data(city):
