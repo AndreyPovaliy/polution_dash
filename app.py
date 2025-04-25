@@ -3,7 +3,7 @@ from layouts import create_layout
 from callbacks import register_callbacks
 import dash_bootstrap_components as dbc
 
-app = Dash(external_stylesheets=[dbc.themes.JOURNAL])
+app = Dash(external_stylesheets=[dbc.themes.SANDSTONE])
 app.title = "Состояние чего-то другого"
 server = app.server
 

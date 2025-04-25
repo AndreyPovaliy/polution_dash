@@ -30,31 +30,31 @@ def register_callbacks(app):
         ])
 
         wind_kph_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['wind_kph'], mode='lines+markers', name='wind_kph')],
-           layout=go.Layout(title='Скорость ветра:', xaxis_title='Время', yaxis_title='(к/ч)', template='ggplot2') 
+           data=[go.Scatter(x=data['hours'], y=data['wind_kph'], mode='lines+markers', name='wind_kph',line_color='#74789d')],
+           layout=go.Layout(title='Скорость ветра', xaxis_title='Время', yaxis_title='(к/ч)', template='ggplot2') 
         )
         pressure_mb_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['pressure_mb'], mode='lines+markers', name='pressure_mb')],
+           data=[go.Scatter(x=data['hours'], y=data['pressure_mb'], mode='lines+markers', name='pressure_mb',line_color='#74789d')],
            layout=go.Layout(title='Давление', xaxis_title='Время', yaxis_title='(миллибары)', template='ggplot2') 
         )
 
         humidity_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['humidity'], mode='lines+markers', name='humidity')],
+           data=[go.Scatter(x=data['hours'], y=data['humidity'], mode='lines+markers', name='humidity',line_color='#74789d')],
            layout=go.Layout(title='Влажность', xaxis_title='Время', yaxis_title='(%)', template='ggplot2') 
         )
 
         cloud_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['cloud'], mode='lines+markers', name='cloud')],
+           data=[go.Scatter(x=data['hours'], y=data['cloud'], mode='lines+markers', name='cloud',line_color='#74789d')],
            layout=go.Layout(title='Облачный покров ', xaxis_title='Время', yaxis_title='(%)', template='ggplot2') 
         )
 
         uv_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['uv'], mode='lines+markers', name='uv')],
+           data=[go.Scatter(x=data['hours'], y=data['uv'], mode='lines+markers', name='uv',line_color='#74789d')],
            layout=go.Layout(title='УФ-индекс', xaxis_title='Время', yaxis_title='(индекс)', template='ggplot2') 
         )
 
         gust_kph_fig = go.Figure(
-           data=[go.Scatter(x=data['hours'], y=data['gust_kph'], mode='lines+markers', name='gust_kph')],
+           data=[go.Scatter(x=data['hours'], y=data['gust_kph'], mode='lines+markers', name='gust_kph',line_color='#74789d')],
            layout=go.Layout(title='Порыв ветра', xaxis_title='Время', yaxis_title='(к/ч)', template='ggplot2') 
         )
        

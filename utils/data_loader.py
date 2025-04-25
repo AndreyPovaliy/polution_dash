@@ -32,7 +32,7 @@ def load_data(city):
     humidity = [h['humidity'] for h in forecast_hours]
     cloud = [h['cloud'] for h in forecast_hours]
     uv = [h['uv'] for h in forecast_hours]
-    gust_kph = [h['uv'] for h in forecast_hours]
+    gust_kph = [h['gust_kph'] for h in forecast_hours]
    
     return {"location": location,
             "city_name": city_name,
